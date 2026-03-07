@@ -108,8 +108,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
         <Logo />
         <div className="flex flex-col mt-5 text-neutral-700 dark:text-neutral-300 text-sm">
           <span>
-            VietViVu là đơn vị lữ hành tiên phong khai thác các sản phẩm du lịch trong và ngoài nước
-            đặc biệt là Du lịch Trung Quốc.
+            VietViVu là đơn vị lữ hành tiên phong khai thác các sản phẩm du lịch trong và ngoài nước.
           </span>
 
           <div className="flex justify-between items-center mt-4">

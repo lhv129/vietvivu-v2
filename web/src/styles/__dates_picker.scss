@@ -66,6 +66,11 @@
   @apply flex h-[46px] w-[46px] items-center justify-center rounded-full;
 }
 
+.react-datepicker__day--disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
 /* addListingDatePickerExclude */
 .addListingDatePickerExclude {
   .react-datepicker__day {
