@@ -26,10 +26,12 @@ const StaySearchForm: FC = () => {
     infants: 1,
   });
 
-  const formatDate = (date: Date | null) => {
-    if (!date) return null;
-    return date.toISOString().split("T")[0];
-  };
+  const formatDate = (date: Date | null) =>
+    date
+      ? `${date.getFullYear()}-${(date.getMonth() + 1)
+        .toString()
+        .padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`
+      : null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -55,7 +57,7 @@ const StaySearchForm: FC = () => {
       value={location?.name || ""}
       onChange={setLocation}
     />
-    
+
     < div className="self-center border-r border-slate-200 dark:border-slate-700 h-8" ></div >
 
     {/* DATE RANGE */}

@@ -6,7 +6,11 @@ import { CalendarIcon } from "@heroicons/react/24/outline";
 import DatePickerCustomHeaderTwoMonth from "@/components/DatePickerCustomHeaderTwoMonth";
 import DatePickerCustomDay from "@/components/DatePickerCustomDay";
 import DatePicker from "react-datepicker";
+import { registerLocale } from "react-datepicker";
+import { vi } from "date-fns/locale";
 import ClearDataButton from "./ClearDataButton";
+
+registerLocale("vi", vi);
 
 export interface StayDatesRangeInputProps {
   className?: string;
@@ -35,6 +39,13 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
     onChange?.(dates);
   };
 
+  // format: 01 T4
+  const formatDate = (date: Date) => {
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = date.getMonth() + 1;
+    return `${day} T${month}`;
+  };
+
   const renderInput = () => (
     <>
       <div className="text-neutral-300 dark:text-neutral-400">
@@ -43,17 +54,8 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 
       <div className="flex-grow text-left">
         <span className="block xl:text-lg font-semibold">
-          {startDate?.toLocaleDateString("vi-VN", {
-            month: "short",
-            day: "2-digit",
-          }) || "Thêm ngày"}
-          {endDate
-            ? " - " +
-            endDate.toLocaleDateString("vi-VN", {
-              month: "short",
-              day: "2-digit",
-            })
-            : ""}
+          {startDate ? formatDate(startDate) : "Thêm ngày"}
+          {endDate ? " - " + formatDate(endDate) : ""}
         </span>
 
         <span className="block mt-1 text-sm text-neutral-400 leading-none font-light">
@@ -94,6 +96,7 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
             <Popover.Panel className="absolute left-1/2 z-10 mt-3 top-full w-screen max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl">
               <div className="overflow-hidden rounded-3xl shadow-lg ring-1 ring-black ring-opacity-5 bg-white dark:bg-neutral-800 p-8">
                 <DatePicker
+                  locale="vi"
                   selected={startDate}
                   onChange={onChangeDate}
                   startDate={startDate}
