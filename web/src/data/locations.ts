@@ -1,25 +1,39 @@
-import ncNanoId from "@/utils/ncNanoId";
-
 export interface LocationItem {
-  id: string;
+  id: number;
   name: string;
 }
 
 export const LOCATION_DEMO: LocationItem[] = [
   {
-    id: ncNanoId(),
+    id: 1,
     name: "Hà Nội",
   },
   {
-    id: ncNanoId(),
+    id: 2,
     name: "Nha Trang",
   },
   {
-    id: ncNanoId(),
+    id: 3,
     name: "Đà Nẵng",
   },
   {
-    id: ncNanoId(),
+    id: 4,
     name: "TP. Hồ Chí Minh",
+  },
+  {
+    id: 5,
+    name: "Đà Lạt",
+  },
+  {
+    id: 6,
+    name: "Sóc Sơn",
+  },
+  {
+    id: 7,
+    name: "Ba Vì",
+  },
+  {
+    id: 8,
+    name: "Sơn La",
   },
 ]

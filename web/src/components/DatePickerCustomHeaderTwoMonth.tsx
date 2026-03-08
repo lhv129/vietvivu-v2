@@ -23,12 +23,11 @@ const DatePickerCustomHeaderTwoMonth = ({
           <ChevronLeftIcon className="w-5 h-5" />
         </span>
       </button>
+
       <span className="react-datepicker__current-month">
-        {monthDate.toLocaleString("en-US", {
-          month: "long",
-          year: "numeric",
-        })}
+        Tháng {monthDate.getMonth() + 1} {monthDate.getFullYear()}
       </span>
+
       <button
         aria-label="Next Month"
         className="react-datepicker__navigation react-datepicker__navigation--next absolute -top-1 -right-0 flex items-center justify-center p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full"

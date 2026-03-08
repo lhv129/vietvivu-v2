@@ -1,5 +1,5 @@
 import React from "react";
-import SectionHero from "./(client)/(client-components)/(SectionHero)/SectionHero";
+import SectionHero from "./(client)/(client-components)/(HeroSearchForm)/SectionHero";
 
 function PageHome() {
   return (

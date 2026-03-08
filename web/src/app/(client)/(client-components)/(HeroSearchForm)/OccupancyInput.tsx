@@ -8,9 +8,9 @@ import ClearDataButton from "./ClearDataButton";
 import ButtonSubmit from "./ButtonSubmit";
 import { PathName } from "@/routers/types";
 import { UserPlusIcon } from "@heroicons/react/24/outline";
-import { OccupancyObject } from "./type";
+import { OccupancyObject } from "../type";
 
-export interface GuestsInputProps {
+export interface OccupancyInputProps {
   fieldClassName?: string;
   className?: string;
   buttonSubmitHref?: PathName;
@@ -19,7 +19,7 @@ export interface GuestsInputProps {
   onChange: (data: OccupancyObject) => void;
 }
 
-const GuestsInput: FC<GuestsInputProps> = ({
+const OccupancyInput: FC<OccupancyInputProps> = ({
   fieldClassName = "[ nc-hero-field-padding ]",
   className = "[ nc-flex-1 ]",
   buttonSubmitHref = "/listing-stay-map",
@@ -143,4 +143,4 @@ const GuestsInput: FC<GuestsInputProps> = ({
   );
 };
 
-export default GuestsInput;
+export default OccupancyInput;
