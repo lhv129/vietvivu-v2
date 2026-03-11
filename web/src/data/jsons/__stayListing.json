@@ -4,194 +4,290 @@
       "id": 1,
       "title": "Khách sạn Hồ Tây View",
       "slug": "khach-san-ho-tay-view",
-      "locationId": 1,
+      "location": {
+        "id": 1,
+        "name": "Hà Nội",
+        "slug": "ha-noi"
+      },
       "address": "12 Phủ Tây Hồ, Tây Hồ, Hà Nội",
       "featuredImage": "https://images.pexels.com/photos/5191371/pexels-photo-5191371.jpeg",
       "galleryImgs": [
-        "https://images.pexels.com/photos/1268871/pexels-photo-1268871.jpeg",
-        "https://images.pexels.com/photos/1179156/pexels-photo-1179156.jpeg",
-        "https://images.pexels.com/photos/2506988/pexels-photo-2506988.jpeg"
+        "https://images.pexels.com/photos/6434634/pexels-photo-6434634.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/3201735/pexels-photo-3201735.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/4577673/pexels-photo-4577673.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/6474535/pexels-photo-6474535.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
       ],
       "reviewStart": 4.8,
-      "reviewCount": 28,
-      "empty_room": 5,
-      "checkin_time": "14:00",
-      "checkout_time": "12:00"
+      "reviewCount": 28
     },
     "pricing": {
-      "weekday_price": 399000,
-      "weekend_extra": 50000,
-      "holiday_extra": 100000,
+      "min_price": 314000,
+      "original_min_price": 349000,
+      "discount_percent": 10,
       "currency": "VND"
     },
-    "active_discount": {
-      "percent": 10,
-      "final_price": 359100
-    }
+    "available_rooms": 5,
+    "map": { "lat": 55.1972153, "lng": 61.4407266 }
   },
   {
     "hotel": {
       "id": 2,
-      "title": "Khách sạn Hồ Tây View 2",
-      "slug": "khach-san-ho-tay-view-2",
-      "locationId": 1,
-      "address": "12 Phủ Tây Hồ, Tây Hồ, Hà Nội",
-      "featuredImage": "https://images.pexels.com/photos/5191371/pexels-photo-5191371.jpeg",
+      "title": "Hanoi Old Quarter Hotel",
+      "slug": "hanoi-old-quarter-hotel",
+      "location": {
+        "id": 1,
+        "name": "Hà Nội",
+        "slug": "ha-noi"
+      },
+      "address": "45 Hàng Bồ, Hoàn Kiếm, Hà Nội",
+      "featuredImage": "https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg",
       "galleryImgs": [
-        "https://images.pexels.com/photos/1268871/pexels-photo-1268871.jpeg",
-        "https://images.pexels.com/photos/1179156/pexels-photo-1179156.jpeg",
-        "https://images.pexels.com/photos/2506988/pexels-photo-2506988.jpeg"
+        "https://images.pexels.com/photos/6434634/pexels-photo-6434634.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/3201735/pexels-photo-3201735.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/4577673/pexels-photo-4577673.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/6474535/pexels-photo-6474535.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
       ],
-      "reviewStart": 4.8,
-      "reviewCount": 2800,
-      "empty_room": 5,
-      "checkin_time": "14:00",
-      "checkout_time": "12:00"
+      "reviewStart": 4.6,
+      "reviewCount": 54
     },
     "pricing": {
-      "weekday_price": 400000,
-      "weekend_extra": 50000,
-      "holiday_extra": 100000,
+      "min_price": 420000,
+      "original_min_price": 420000,
+      "discount_percent": 0,
       "currency": "VND"
     },
-    "active_discount": {
-      "percent": 20,
-      "final_price": 360000
-    }
+    "available_rooms": 7
   },
   {
     "hotel": {
       "id": 3,
-      "title": "Khách sạn Hồ Tây View",
-      "slug": "khach-san-ho-tay-view",
-      "locationId": 1,
-      "address": "12 Phủ Tây Hồ, Tây Hồ, Hà Nội",
-      "featuredImage": "https://images.pexels.com/photos/5191371/pexels-photo-5191371.jpeg",
+      "title": "Saigon Riverside Hotel",
+      "slug": "saigon-riverside-hotel",
+      "location": {
+        "id": 2,
+        "name": "Nha Trang",
+        "slug": "nha-trang"
+      },
+      "address": "18 Tôn Đức Thắng, Quận 1, TP.HCM",
+      "featuredImage": "https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg",
       "galleryImgs": [
-        "https://images.pexels.com/photos/1268871/pexels-photo-1268871.jpeg",
-        "https://images.pexels.com/photos/1179156/pexels-photo-1179156.jpeg",
-        "https://images.pexels.com/photos/2506988/pexels-photo-2506988.jpeg"
+        "https://images.pexels.com/photos/6434634/pexels-photo-6434634.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/3201735/pexels-photo-3201735.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/4577673/pexels-photo-4577673.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/6474535/pexels-photo-6474535.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
       ],
-      "reviewStart": 4.8,
-      "reviewCount": 28,
-      "empty_room": 5,
-      "checkin_time": "14:00",
-      "checkout_time": "12:00"
+      "reviewStart": 4.7,
+      "reviewCount": 31
     },
     "pricing": {
-      "weekday_price": 399000,
-      "weekend_extra": 50000,
-      "holiday_extra": 100000,
+      "min_price": 540000,
+      "original_min_price": 600000,
+      "discount_percent": 10,
       "currency": "VND"
     },
-    "active_discount": null
+    "available_rooms": 3
   },
   {
     "hotel": {
       "id": 4,
-      "title": "Khách sạn Hồ Tây View",
-      "slug": "khach-san-ho-tay-view",
-      "locationId": 1,
-      "address": "12 Phủ Tây Hồ, Tây Hồ, Hà Nội",
-      "featuredImage": "https://images.pexels.com/photos/5191371/pexels-photo-5191371.jpeg",
+      "title": "Da Nang Beach Resort",
+      "slug": "da-nang-beach-resort",
+      "location": {
+        "id": 3,
+        "name": "Đà Nẵng",
+        "slug": "da-nang"
+      },
+      "address": "99 Võ Nguyên Giáp, Sơn Trà, Đà Nẵng",
+      "featuredImage": "https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg",
       "galleryImgs": [
-        "https://images.pexels.com/photos/1268871/pexels-photo-1268871.jpeg",
-        "https://images.pexels.com/photos/1179156/pexels-photo-1179156.jpeg",
-        "https://images.pexels.com/photos/2506988/pexels-photo-2506988.jpeg"
+        "https://images.pexels.com/photos/6434634/pexels-photo-6434634.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/3201735/pexels-photo-3201735.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/4577673/pexels-photo-4577673.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/6474535/pexels-photo-6474535.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
       ],
-      "reviewStart": 4.8,
-      "reviewCount": 28,
-      "empty_room": 5,
-      "checkin_time": "14:00",
-      "checkout_time": "12:00"
+      "reviewStart": 4.9,
+      "reviewCount": 87
     },
     "pricing": {
-      "weekday_price": 399000,
-      "weekend_extra": 50000,
-      "holiday_extra": 100000,
+      "min_price": 850000,
+      "original_min_price": 1000000,
+      "discount_percent": 15,
       "currency": "VND"
     },
-    "active_discount": null
+    "available_rooms": 8
   },
   {
     "hotel": {
       "id": 5,
-      "title": "Khách sạn Hồ Tây View",
-      "slug": "khach-san-ho-tay-view",
-      "locationId": 1,
-      "address": "12 Phủ Tây Hồ, Tây Hồ, Hà Nội",
-      "featuredImage": "https://images.pexels.com/photos/5191371/pexels-photo-5191371.jpeg",
+      "title": "Sapa Mountain Lodge",
+      "slug": "sapa-mountain-lodge",
+      "location": {
+        "id": 4,
+        "name": "TP. Hồ Chí Minh",
+        "slug": "tp-ho-chi-minh"
+      },
+      "address": "Fansipan, Sa Pa, Lào Cai",
+      "featuredImage": "https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg",
       "galleryImgs": [
-        "https://images.pexels.com/photos/1268871/pexels-photo-1268871.jpeg",
-        "https://images.pexels.com/photos/1179156/pexels-photo-1179156.jpeg",
-        "https://images.pexels.com/photos/2506988/pexels-photo-2506988.jpeg"
+        "https://images.pexels.com/photos/6434634/pexels-photo-6434634.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/3201735/pexels-photo-3201735.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/4577673/pexels-photo-4577673.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/6474535/pexels-photo-6474535.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
       ],
-      "reviewStart": 4.8,
-      "reviewCount": 28,
-      "empty_room": 5,
-      "checkin_time": "14:00",
-      "checkout_time": "12:00"
+      "reviewStart": 4.5,
+      "reviewCount": 21
     },
     "pricing": {
-      "weekday_price": 399000,
-      "weekend_extra": 50000,
-      "holiday_extra": 100000,
+      "min_price": 290000,
+      "original_min_price": 320000,
+      "discount_percent": 10,
       "currency": "VND"
     },
-    "active_discount": null
+    "available_rooms": 4
   },
   {
     "hotel": {
       "id": 6,
-      "title": "Resort Biển Nha Trang Paradise",
-      "slug": "resort-bien-nha-trang-paradise",
-      "locationId": 2,
-      "address": "100 Trần Phú, TP. Nha Trang",
-      "featuredImage": "https://images.pexels.com/photos/2736187/pexels-photo-2736187.jpeg",
+      "title": "Khách sạn Hồ Tây View",
+      "slug": "khach-san-ho-tay-view",
+      "location": {
+        "id": 1,
+        "name": "Hà Nội",
+        "slug": "ha-noi"
+      },
+      "address": "12 Phủ Tây Hồ, Tây Hồ, Hà Nội",
+      "featuredImage": "https://images.pexels.com/photos/5191371/pexels-photo-5191371.jpeg",
       "galleryImgs": [
-        "https://images.pexels.com/photos/6900098/pexels-photo-6900098.jpeg",
-        "https://images.pexels.com/photos/1371313/pexels-photo-1371313.jpeg",
-        "https://images.pexels.com/photos/2373201/pexels-photo-2373201.jpeg"
+        "https://images.pexels.com/photos/6434634/pexels-photo-6434634.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/3201735/pexels-photo-3201735.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/4577673/pexels-photo-4577673.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/6474535/pexels-photo-6474535.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
       ],
-      "reviewStart": 4.5,
-      "reviewCount": 120,
-      "empty_room": 8,
-      "checkin_time": "14:00",
-      "checkout_time": "12:00"
+      "reviewStart": 4.8,
+      "reviewCount": 28
     },
     "pricing": {
-      "weekday_price": 150000,
-      "weekend_extra": 70000,
-      "holiday_extra": 120000,
+      "min_price": 314000,
+      "original_min_price": 349000,
+      "discount_percent": 10,
       "currency": "VND"
     },
-    "active_discount": null
+    "available_rooms": 5
   },
   {
     "hotel": {
       "id": 7,
-      "title": "Khách sạn Biển Mỹ Khê",
-      "slug": "khach-san-bien-my-khe",
-      "locationId": 3,
-      "address": "25 Võ Nguyên Giáp, Sơn Trà, Đà Nẵng",
-      "featuredImage": "https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg",
+      "title": "Khách sạn Hồ Tây View",
+      "slug": "khach-san-ho-tay-view",
+      "location": {
+        "id": 1,
+        "name": "Hà Nội",
+        "slug": "ha-noi"
+      },
+      "address": "12 Phủ Tây Hồ, Tây Hồ, Hà Nội",
+      "featuredImage": "https://images.pexels.com/photos/5191371/pexels-photo-5191371.jpeg",
       "galleryImgs": [
-        "https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg",
-        "https://images.pexels.com/photos/4577673/pexels-photo-4577673.jpeg",
-        "https://images.pexels.com/photos/3201735/pexels-photo-3201735.jpeg"
+        "https://images.pexels.com/photos/6434634/pexels-photo-6434634.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/3201735/pexels-photo-3201735.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/4577673/pexels-photo-4577673.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/6474535/pexels-photo-6474535.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
       ],
-      "reviewStart": 4.2,
-      "reviewCount": 86,
-      "empty_room": 6,
-      "checkin_time": "14:00",
-      "checkout_time": "12:00"
+      "reviewStart": 4.8,
+      "reviewCount": 28
     },
     "pricing": {
-      "weekday_price": 120000,
-      "weekend_extra": 50000,
-      "holiday_extra": 100000,
+      "min_price": 314000,
+      "original_min_price": 349000,
+      "discount_percent": 10,
       "currency": "VND"
     },
-    "active_discount": null
+    "available_rooms": 5
+  },
+  {
+    "hotel": {
+      "id": 8,
+      "title": "Khách sạn Hồ Tây View",
+      "slug": "khach-san-ho-tay-view",
+      "location": {
+        "id": 1,
+        "name": "Hà Nội",
+        "slug": "ha-noi"
+      },
+      "address": "12 Phủ Tây Hồ, Tây Hồ, Hà Nội",
+      "featuredImage": "https://images.pexels.com/photos/5191371/pexels-photo-5191371.jpeg",
+      "galleryImgs": [
+        "https://images.pexels.com/photos/6434634/pexels-photo-6434634.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/3201735/pexels-photo-3201735.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/4577673/pexels-photo-4577673.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/6474535/pexels-photo-6474535.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+      ],
+      "reviewStart": 4.8,
+      "reviewCount": 28
+    },
+    "pricing": {
+      "min_price": 314000,
+      "original_min_price": 349000,
+      "discount_percent": 10,
+      "currency": "VND"
+    },
+    "available_rooms": 5
+  },
+  {
+    "hotel": {
+      "id": 9,
+      "title": "Khách sạn Hồ Tây View",
+      "slug": "khach-san-ho-tay-view",
+      "location": {
+        "id": 1,
+        "name": "Hà Nội",
+        "slug": "ha-noi"
+      },
+      "address": "12 Phủ Tây Hồ, Tây Hồ, Hà Nội",
+      "featuredImage": "https://images.pexels.com/photos/5191371/pexels-photo-5191371.jpeg",
+      "galleryImgs": [
+        "https://images.pexels.com/photos/6434634/pexels-photo-6434634.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/3201735/pexels-photo-3201735.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/4577673/pexels-photo-4577673.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/6474535/pexels-photo-6474535.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+      ],
+      "reviewStart": 4.8,
+      "reviewCount": 28
+    },
+    "pricing": {
+      "min_price": 314000,
+      "original_min_price": 349000,
+      "discount_percent": 10,
+      "currency": "VND"
+    },
+    "available_rooms": 5
+  },
+  {
+    "hotel": {
+      "id": 10,
+      "title": "Khách sạn Hồ Tây View",
+      "slug": "khach-san-ho-tay-view",
+      "location": {
+        "id": 1,
+        "name": "Hà Nội",
+        "slug": "ha-noi"
+      },
+      "address": "12 Phủ Tây Hồ, Tây Hồ, Hà Nội",
+      "featuredImage": "https://images.pexels.com/photos/5191371/pexels-photo-5191371.jpeg",
+      "galleryImgs": [
+        "https://images.pexels.com/photos/6434634/pexels-photo-6434634.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/3201735/pexels-photo-3201735.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/4577673/pexels-photo-4577673.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/6474535/pexels-photo-6474535.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+      ],
+      "reviewStart": 4.8,
+      "reviewCount": 28
+    },
+    "pricing": {
+      "min_price": 314000,
+      "original_min_price": 349000,
+      "discount_percent": 10,
+      "currency": "VND"
+    },
+    "available_rooms": 5
   }
 ]

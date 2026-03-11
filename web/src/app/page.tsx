@@ -2,6 +2,7 @@ import React from "react";
 import SectionHero from "./(client)/(client-components)/(HeroSearchForm)/SectionHero";
 import SectionSliderNewLocations from "@/components/SectionSliderNewLocations";
 import SectionGridFeaturePlaces from "@/components/SectionGridFeaturePlaces";
+import SectionVideos from "@/components/SectionVideos";
 
 import { LOCATION_DEMO } from "@/data/locations";
 import { DEMO_STAY_LISTINGS } from "@/data/listings";
@@ -21,6 +22,8 @@ function PageHome() {
           stayListings={DEMO_STAY_LISTINGS}
           locations={LOCATION_DEMO}
         />
+
+        <SectionVideos />
 
       </div>
     </main>

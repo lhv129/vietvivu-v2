@@ -66,11 +66,19 @@ export type TwMainColor =
 // STAY TYPE (NEW STRUCTURE)
 // ==============================
 
+// ==============================
+// STAY TYPE (BOOKING STRUCTURE)
+// ==============================
+
 export interface HotelType {
   id: number;
   title: string;
   slug: string;
-  locationId: number;
+  location: {
+    id: number,
+    name: string,
+    slug: string
+  },
   address: string;
 
   featuredImage: StaticImageData | string;
@@ -79,28 +87,23 @@ export interface HotelType {
   reviewStart: number;
   reviewCount: number;
 
-  empty_room: number;
-
   checkin_time: string;
   checkout_time: string;
 }
 
 export interface PricingType {
-  weekday_price: number;
-  weekend_extra: number;
-  holiday_extra: number;
+  min_price: number;
+  original_min_price: number;
+  discount_percent: number;
   currency: string;
-}
-
-export interface ActiveDiscountType {
-  percent: number;
-  final_price: number;
 }
 
 export interface StayDataType {
   hotel: HotelType;
   pricing: PricingType;
-  active_discount: ActiveDiscountType | null;
+
+  // tổng phòng trống của hotel
+  available_rooms: number;
 }
 
 

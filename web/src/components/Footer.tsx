@@ -14,47 +14,44 @@ export interface WidgetFooterMenu {
 
 const widgetMenus: WidgetFooterMenu[] = [
   {
-    id: "5",
-    title: "Getting started",
-    menus: [
-      { href: "#", label: "Installation" },
-      { href: "#", label: "Release Notes" },
-      { href: "#", label: "Upgrade Guide" },
-      { href: "#", label: "Browser Support" },
-      { href: "#", label: "Editor Support" },
-    ],
-  },
-  {
     id: "1",
-    title: "Explore",
+    title: "Khám phá",
     menus: [
-      { href: "#", label: "Design features" },
-      { href: "#", label: "Prototyping" },
-      { href: "#", label: "Design systems" },
-      { href: "#", label: "Pricing" },
-      { href: "#", label: "Security" },
+      { href: "/stays", label: "Khách sạn" },
+      { href: "/stays?type=homestay", label: "Homestay" },
+      { href: "/stays?type=resort", label: "Resort" },
+      { href: "/destinations", label: "Điểm đến nổi bật" },
+      { href: "/deals", label: "Ưu đãi hôm nay" },
     ],
   },
   {
     id: "2",
-    title: "Resources",
+    title: "Hỗ trợ",
     menus: [
-      { href: "#", label: "Best practices" },
-      { href: "#", label: "Support" },
-      { href: "#", label: "Developers" },
-      { href: "#", label: "Learn design" },
-      { href: "#", label: "Releases" },
+      { href: "/help-center", label: "Trung tâm trợ giúp" },
+      { href: "/faq", label: "Câu hỏi thường gặp" },
+      { href: "/contact", label: "Liên hệ hỗ trợ" },
+      { href: "/booking-guide", label: "Hướng dẫn đặt phòng" },
+      { href: "/refund-policy", label: "Chính sách hoàn tiền" },
+    ],
+  },
+  {
+    id: "3",
+    title: "Công ty",
+    menus: [
+      { href: "/about", label: "Về chúng tôi" },
+      { href: "/careers", label: "Tuyển dụng" },
+      { href: "/blog", label: "Blog du lịch" },
+      { href: "/partners", label: "Đối tác" },
     ],
   },
   {
     id: "4",
-    title: "Community",
+    title: "Pháp lý",
     menus: [
-      { href: "#", label: "Discussion Forums" },
-      { href: "#", label: "Code of Conduct" },
-      { href: "#", label: "Community Resources" },
-      { href: "#", label: "Contributing" },
-      { href: "#", label: "Concurrent Mode" },
+      { href: "/terms", label: "Điều khoản sử dụng" },
+      { href: "/privacy", label: "Chính sách bảo mật" },
+      { href: "/cookies", label: "Chính sách cookie" },
     ],
   },
 ];

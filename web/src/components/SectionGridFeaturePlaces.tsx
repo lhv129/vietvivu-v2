@@ -1,12 +1,6 @@
 "use client";
 
-import React, {
-  FC,
-  ReactNode,
-  useState,
-  useMemo,
-  useEffect,
-} from "react";
+import React, { FC, ReactNode, useState, useMemo } from "react";
 import { StayDataType } from "@/data/types";
 import { LocationItem } from "@/data/locations";
 import ButtonPrimary from "@/shared/ButtonPrimary";
@@ -22,8 +16,8 @@ export interface SectionGridFeaturePlacesProps {
   subHeading?: ReactNode;
 }
 
-const INITIAL_ROWS = 3;
-const LOAD_MORE_ROWS = 2;
+const INITIAL_ITEMS = 12;
+const LOAD_MORE_ITEMS = 8;
 
 const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
   stayListings,
@@ -33,44 +27,19 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
   subHeading = "Những nơi lưu trú phổ biến được gợi ý cho bạn",
 }) => {
   const [activeLocation, setActiveLocation] = useState<number | null>(
-    locations[0]?.id || null
+    locations?.[0]?.id ?? null
   );
 
-  const [columns, setColumns] = useState(4);
-  const [rows, setRows] = useState(INITIAL_ROWS);
+  const [visibleCount, setVisibleCount] = useState(INITIAL_ITEMS);
 
-  // Detect columns theo screen
-  useEffect(() => {
-    const updateColumns = () => {
-      const width = window.innerWidth;
-
-      if (width < 640) setColumns(1);
-      else if (width < 1024) setColumns(2);
-      else if (width < 1280) setColumns(3);
-      else setColumns(4);
-    };
-
-    updateColumns();
-    window.addEventListener("resize", updateColumns);
-
-    return () => window.removeEventListener("resize", updateColumns);
-  }, []);
-
-  const visibleCount = columns * rows;
-
-  // Filter theo location (DATA MỚI)
+  // Filter theo location
   const filteredListings = useMemo(() => {
     if (!activeLocation) return stayListings;
 
     return stayListings.filter(
-      (item) => item?.hotel?.locationId === activeLocation
+      (item) => item?.hotel?.location?.id === activeLocation
     );
   }, [stayListings, activeLocation]);
-
-  // Reset rows khi đổi location
-  useEffect(() => {
-    setRows(INITIAL_ROWS);
-  }, [activeLocation]);
 
   return (
     <div className="nc-SectionGridFeaturePlaces relative">
@@ -80,12 +49,20 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
       <LocationTabs
         locations={locations}
         activeLocation={activeLocation}
-        setActiveLocation={setActiveLocation}
+        setActiveLocation={(id) => {
+          setActiveLocation(id);
+          setVisibleCount(INITIAL_ITEMS);
+        }}
       />
 
       {/* Grid */}
       <div
-        className={`grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ${gridClass}`}
+        className={`grid gap-6 md:gap-8 
+        grid-cols-1 
+        sm:grid-cols-2 
+        lg:grid-cols-3 
+        xl:grid-cols-4 
+        ${gridClass}`}
       >
         {filteredListings.slice(0, visibleCount).map((stay) => (
           <StayCard2 key={stay.hotel.id} data={stay} />
@@ -96,7 +73,9 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
       {visibleCount < filteredListings.length && (
         <div className="flex mt-16 justify-center items-center">
           <ButtonPrimary
-            onClick={() => setRows((prev) => prev + LOAD_MORE_ROWS)}
+            onClick={() =>
+              setVisibleCount((prev) => prev + LOAD_MORE_ITEMS)
+            }
           >
             Hiển thị thêm
           </ButtonPrimary>

@@ -102,7 +102,7 @@ const SectionSliderNewLocations: FC<SectionSliderNewLocationsProps> = ({
                       taxonomy={{
                         id: item.id,
                         name: item.name,
-                        href: `/stays/${item.slug}` as Route,
+                        href: `/${item.slug}/khach-san` as Route,
                         taxonomy: "location",
                         count: item.count,
                         thumbnail: item.thumbnail,

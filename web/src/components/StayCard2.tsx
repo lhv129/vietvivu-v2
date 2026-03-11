@@ -22,7 +22,7 @@ const StayCard2: FC<StayCard2Props> = ({
   className = "",
   data = DEMO_DATA,
 }) => {
-  const { hotel, pricing, active_discount } = data;
+  const { hotel, pricing, available_rooms } = data;
 
   const {
     id,
@@ -33,18 +33,14 @@ const StayCard2: FC<StayCard2Props> = ({
     slug,
     reviewStart,
     reviewCount,
-    empty_room,
+    location,
   } = hotel;
 
-  const basePrice = pricing.weekday_price;
+  const { min_price, original_min_price, discount_percent } = pricing;
 
-  const finalPrice = active_discount
-    ? active_discount.final_price
-    : basePrice;
+  const href = `/${location.slug}/khach-san/${slug}`;
 
-  const href = `/stays/${slug}`;
-
-  // ===== IMAGE SLIDER =====
+  // IMAGE SLIDER
   const renderSliderGallery = () => {
     return (
       <div className="relative w-full">
@@ -53,102 +49,83 @@ const StayCard2: FC<StayCard2Props> = ({
           ratioClass="aspect-w-12 aspect-h-11"
           galleryImgs={galleryImgs?.length ? galleryImgs : [featuredImage]}
           imageClass="rounded-lg"
-          href={href}
+          href={href as any}
         />
 
         <BtnLikeIcon className="absolute right-3 top-3 z-[1]" />
 
-        {active_discount && (
+        {discount_percent > 0 && (
           <SaleOffBadge
             className="absolute left-3 top-3"
-            text={`-${active_discount.percent}%`}
+            text={`-${discount_percent}%`}
           />
         )}
       </div>
     );
   };
 
-  // ===== CARD CONTENT =====
   const renderContent = () => {
     return (
       <div className={size === "default" ? "mt-3 space-y-3" : "mt-2 space-y-2"}>
         <div className="space-y-2">
           <span className="text-sm text-neutral-500 dark:text-neutral-400">
-            Còn {empty_room} phòng trống
+            Còn {available_rooms} phòng trống
           </span>
 
-          <div className="flex items-center space-x-2">
-            <h2
-              className={`font-semibold capitalize text-neutral-900 dark:text-white ${size === "default" ? "text-base" : "text-base"
-                }`}
+          <h2 className="font-semibold text-base text-neutral-900 dark:text-white">
+            <span className="line-clamp-1">{title}</span>
+          </h2>
+
+          <div className="flex items-center text-neutral-500 text-sm space-x-1.5">
+            <svg
+              className="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              <span className="line-clamp-1">{title}</span>
-            </h2>
-          </div>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+            </svg>
 
-          <div className="flex items-center text-neutral-500 dark:text-neutral-400 text-sm space-x-1.5">
-            {size === "default" && (
-              <svg
-                className="h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
-            )}
-
-            <span>{address}</span>
+            <span className="line-clamp-1">{address}</span>
           </div>
         </div>
 
         <div className="w-14 border-b border-neutral-100 dark:border-neutral-800"></div>
 
-        {/* PRICE */}
         <div className="flex justify-between items-center">
-          {/* PRICE */}
           <div className="flex flex-col">
-            {active_discount ? (
+            {discount_percent > 0 ? (
               <>
-                {/* Giá gốc */}
                 <span className="line-through text-neutral-400 text-sm">
-                  {basePrice.toLocaleString("vi-VN")}₫
+                  {original_min_price.toLocaleString("vi-VN")}₫
                 </span>
 
-                {/* Giá giảm */}
                 <span className="text-red-500 font-semibold text-base">
-                  {finalPrice.toLocaleString("vi-VN")}₫
-                  <span className="text-neutral-500 text-sm font-normal ml-1">
-                    /đêm
-                  </span>
+                  {min_price.toLocaleString("vi-VN")}₫
+                  <span className="text-neutral-500 text-sm ml-1">/đêm</span>
                 </span>
               </>
             ) : (
               <span className="font-semibold text-base">
-                {basePrice.toLocaleString("vi-VN")}₫
-                <span className="text-neutral-500 text-sm font-normal ml-1">
-                  /đêm
-                </span>
+                {min_price.toLocaleString("vi-VN")}₫
+                <span className="text-neutral-500 text-sm ml-1">/đêm</span>
               </span>
             )}
           </div>
 
-          {/* RATING */}
           {!!reviewStart && (
-            <div className="flex items-center">
-              <StartRating reviewCount={reviewCount} point={reviewStart} />
-            </div>
+            <StartRating reviewCount={reviewCount} point={reviewStart} />
           )}
         </div>
       </div>
@@ -158,7 +135,7 @@ const StayCard2: FC<StayCard2Props> = ({
   return (
     <div className={`nc-StayCard2 group relative ${className}`}>
       {renderSliderGallery()}
-      <Link href={href}>{renderContent()}</Link>
+      <Link href={href as any}>{renderContent()}</Link>
     </div>
   );
 };

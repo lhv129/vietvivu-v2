@@ -34,7 +34,7 @@ export const LOCATION_DEMO: LocationItem[] = [
   {
     id: 4,
     name: "TP. Hồ Chí Minh",
-    slug: "ha-noi",
+    slug: "tp-ho-chi-minh",
     count: 188288,
     thumbnail:
       "https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
