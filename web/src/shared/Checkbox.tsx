@@ -7,7 +7,7 @@ export interface CheckboxProps {
   subLabel?: string;
   className?: string;
   name: string;
-  defaultChecked?: boolean;
+  checked?: boolean;
   onChange?: (checked: boolean) => void;
 }
 
@@ -16,35 +16,38 @@ const Checkbox: FC<CheckboxProps> = ({
   label = "",
   name,
   className = "",
-  defaultChecked,
+  checked = false,
   onChange,
 }) => {
   return (
-    <div className={`flex text-sm sm:text-base ${className}`}>
+    <label
+  className={`flex items-start text-sm sm:text-base cursor-pointer p-1 rounded-lg hover:bg-neutral-100 transition ${className}`}
+>
       <input
         id={name}
         name={name}
         type="checkbox"
-        className="focus:ring-action-primary h-6 w-6 text-primary-500 border-primary rounded border-neutral-500 bg-white dark:bg-neutral-700  dark:checked:bg-primary-500 focus:ring-primary-500"
-        defaultChecked={defaultChecked}
+        checked={checked}
         onChange={(e) => onChange && onChange(e.target.checked)}
+        className="focus:ring-primary-500 h-5 w-5 text-primary-600 border-neutral-300 rounded bg-white dark:bg-neutral-700 dark:checked:bg-primary-500"
       />
-      {label && (
-        <label
-          htmlFor={name}
-          className="ml-3.5 flex flex-col flex-1 justify-center"
-        >
-          <span className=" text-neutral-900 dark:text-neutral-100">
-            {label}
-          </span>
-          {subLabel && (
-            <p className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm font-light">
-              {subLabel}
-            </p>
+
+      {(label || subLabel) && (
+        <span className="ml-3.5 flex flex-col flex-1">
+          {label && (
+            <span className="text-neutral-900 dark:text-neutral-100">
+              {label}
+            </span>
           )}
-        </label>
+
+          {subLabel && (
+            <span className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm font-light">
+              {subLabel}
+            </span>
+          )}
+        </span>
       )}
-    </div>
+    </label>
   );
 };
 
