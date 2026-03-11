@@ -31,6 +31,14 @@ const nextConfig = {
         port: "",
         pathname: "/**",
       },
+
+      // 👇 thêm cái này
+      {
+        protocol: "https",
+        hostname: "img.youtube.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
 };

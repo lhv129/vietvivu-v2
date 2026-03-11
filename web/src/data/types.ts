@@ -17,7 +17,7 @@ export interface TaxonomyType {
   thumbnail?: string;
   desc?: string;
   color?: TwMainColor | string;
-  taxonomy: "category" | "tag";
+  taxonomy: "category" | "tag" | "location";
   listingType?: "stay" | "experiences" | "car";
 }
 
@@ -61,35 +61,56 @@ export type TwMainColor =
   | "purple"
   | "gray";
 
-//
-export interface StayDataType {
-  id: string | number;
-  author: AuthorType;
-  date: string;
-  href: Route<string>;
+
+// ==============================
+// STAY TYPE (NEW STRUCTURE)
+// ==============================
+
+// ==============================
+// STAY TYPE (BOOKING STRUCTURE)
+// ==============================
+
+export interface HotelType {
+  id: number;
   title: string;
-  featuredImage: StaticImageData | string;
-  commentCount: number;
-  viewCount: number;
+  slug: string;
+  location: {
+    id: number,
+    name: string,
+    slug: string
+  },
   address: string;
+
+  featuredImage: StaticImageData | string;
+  galleryImgs: (StaticImageData | string)[];
+
   reviewStart: number;
   reviewCount: number;
-  like: boolean;
-  galleryImgs: (StaticImageData | string)[];
-  price: string;
-  listingCategory: TaxonomyType;
-  maxGuests: number;
-  bedrooms: number;
-  bathrooms: number;
-  saleOff?: string | null;
-  isAds: boolean | null;
-  map: {
-    lat: number;
-    lng: number;
-  };
+
+  checkin_time: string;
+  checkout_time: string;
 }
 
-//
+export interface PricingType {
+  min_price: number;
+  original_min_price: number;
+  discount_percent: number;
+  currency: string;
+}
+
+export interface StayDataType {
+  hotel: HotelType;
+  pricing: PricingType;
+
+  // tổng phòng trống của hotel
+  available_rooms: number;
+}
+
+
+// ==============================
+// EXPERIENCES
+// ==============================
+
 export interface ExperiencesDataType {
   id: string | number;
   author: AuthorType;
@@ -115,7 +136,11 @@ export interface ExperiencesDataType {
   };
 }
 
-//
+
+// ==============================
+// CAR
+// ==============================
+
 export interface CarDataType {
   id: string | number;
   author: AuthorType;

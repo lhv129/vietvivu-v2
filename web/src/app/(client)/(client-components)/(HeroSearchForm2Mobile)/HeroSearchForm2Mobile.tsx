@@ -23,9 +23,9 @@ const HeroSearchForm2Mobile = () => {
 
   const [guests, setGuests] = useState<OccupancyObject>({
     rooms: 1,
-    adults: 1,
-    children: 0,
-    infants: 0,
+    adults: 2,
+    children: 1,
+    infants: 1,
   });
 
   function closeModal() {
