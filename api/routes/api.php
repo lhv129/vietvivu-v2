@@ -1,11 +1,23 @@
 <?php
 
 use App\Http\Controllers\Api\AmenityController;
+use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\Auth\LoginController;
+use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\FacilityController;
 use App\Http\Controllers\Api\HouseRuleController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\LocationController;
 use App\Http\Controllers\Api\PropertyTypeController;
+use Illuminate\Support\Facades\Route;
+
+
+
+// Auth
+Route::post('/auth/login', [LoginController::class, 'login']);
+Route::post('/auth/register', [RegisterController::class, 'register']);
+Route::post('/auth/refresh', [AuthController::class, 'refresh']);
+
+
 
 // Locations
 Route::prefix('locations')->group(function () {
