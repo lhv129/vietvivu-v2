@@ -16,11 +16,9 @@ class CreateLocationRequest extends BaseRequest
         return [
 
             'name' => 'required|string|max:255|unique:locations,name',
-
             'count' => 'nullable|integer|min:0',
-
             'is_active' => 'nullable|boolean',
-
+            'sort_order' => 'nullable|integer|min:0',
             'thumbnail' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048'
 
         ];
@@ -43,6 +41,10 @@ class CreateLocationRequest extends BaseRequest
             'count.min' => 'Số lượng phải lớn hơn hoặc bằng 0',
 
             'is_active.boolean' => 'Trạng thái không hợp lệ',
+
+            'sort_order.integer' => 'Thứ tự sắp xếp phải là số nguyên.',
+
+            'sort_order.min' => 'Thứ tự sắp xếp phải lớn hơn hoặc bằng 0.',
 
             'thumbnail.image' => 'Thumbnail phải là hình ảnh',
 

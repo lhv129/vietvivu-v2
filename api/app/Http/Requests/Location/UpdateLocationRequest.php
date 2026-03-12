@@ -24,9 +24,8 @@ class UpdateLocationRequest extends BaseRequest
             ],
 
             'count' => 'sometimes|integer|min:0',
-
-            'is_active' => 'sometimes|boolean',
-
+            'is_active' => 'nullable|boolean',
+            'sort_order' => 'nullable|integer|min:0',
             'thumbnail' => 'sometimes|image|mimes:jpg,jpeg,png,webp|max:2048'
 
         ];
@@ -47,6 +46,10 @@ class UpdateLocationRequest extends BaseRequest
             'count.min' => 'Số lượng phải lớn hơn hoặc bằng 0',
 
             'is_active.boolean' => 'Trạng thái không hợp lệ',
+
+            'sort_order.integer' => 'Thứ tự sắp xếp phải là số nguyên.',
+
+            'sort_order.min' => 'Thứ tự sắp xếp phải lớn hơn hoặc bằng 0.',
 
             'thumbnail.image' => 'Thumbnail phải là hình ảnh',
 

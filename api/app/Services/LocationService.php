@@ -7,6 +7,7 @@ use App\Helpers\ImageHelper;
 use App\Helpers\SlugHelper;
 use App\Repositories\LocationRepository;
 use App\Services\BaseService;
+use Illuminate\Support\Facades\DB;
 
 class LocationService extends BaseService
 {
@@ -18,17 +19,40 @@ class LocationService extends BaseService
 
     public function create(array $data, $thumbnail = null)
     {
-        $data['slug'] = SlugHelper::createSlug($data['name']);
+        $uploadedImage = null;
 
-        if ($thumbnail) {
+        try {
 
-            $data['thumbnail'] = ImageHelper::uploadSingle(
-                $thumbnail,
-                'locations'
-            );
+            DB::beginTransaction();
+
+            $data['slug'] = SlugHelper::createSlug($data['name']);
+            $data['sort_order'] = $this->repository->getNextSortOrder();
+
+            if ($thumbnail) {
+                $uploadedImage = ImageHelper::uploadSingle(
+                    $thumbnail,
+                    'locations'
+                );
+
+                $data['thumbnail'] = $uploadedImage;
+            }
+
+            $model = $this->repository->create($data);
+
+            DB::commit();
+
+            return $model;
+        } catch (\Throwable $e) {
+
+            DB::rollBack();
+
+            // xóa ảnh nếu đã upload
+            if ($uploadedImage) {
+                ImageHelper::delete($uploadedImage);
+            }
+
+            throw $e;
         }
-
-        return $this->repository->create($data);
     }
 
     public function update($id, array $data, $thumbnail = null)
@@ -39,12 +63,12 @@ class LocationService extends BaseService
             throw new ApiException("Địa điểm không tồn tại", 404);
         }
 
+        // Lưu slug mới nếu name thay đổi
         if (isset($data['name'])) {
             $data['slug'] = SlugHelper::createSlug($data['name']);
         }
 
         if ($thumbnail) {
-
             $data['thumbnail'] = ImageHelper::uploadSingle(
                 $thumbnail, // ảnh mới
                 'locations', // folder lưu ảnh

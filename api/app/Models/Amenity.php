@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Location extends Model
+class Amenity extends Model
 {
     use HasFactory;
     use SoftDeletes;
@@ -15,12 +15,10 @@ class Location extends Model
         'name',
         'sort_order',
         'slug',
-        'count',
         'is_active',
-        'thumbnail'
     ];
 
-    protected $table = 'locations';
+    protected $table = 'amenities';
 
     const ACTIVE = 1;
     const INACTIVE = 0;
