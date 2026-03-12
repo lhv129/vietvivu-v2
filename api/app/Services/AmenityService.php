@@ -11,5 +11,5 @@ class AmenityService extends BaseService
     {
         parent::__construct($repository);
     }
-    protected string $notFoundMessage = "Tiện ích không tồn tại";
+    protected string $notFoundMessage = "Tiện ích không tồn tại hoặc đã bị xóa.";
 }
