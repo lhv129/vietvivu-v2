@@ -13,20 +13,28 @@ use Illuminate\Support\Facades\Route;
 
 
 // Auth
-Route::post('/auth/login', [LoginController::class, 'login']);
-Route::post('/auth/register', [RegisterController::class, 'register']);
-Route::post('/auth/refresh', [AuthController::class, 'refresh']);
+Route::prefix('auth')->group(function () {
+    Route::post('/login', [LoginController::class, 'login']);
+    Route::post('/register', [RegisterController::class, 'register']);
+    Route::post('/refresh', [AuthController::class, 'refresh']);
+});
 
+Route::middleware(['auth:api', 'role:1,2'])->group(function () {
 
+    // Locations
+    Route::prefix('locations')->group(function () {
+        Route::post('/', [LocationController::class, 'store']);
+        Route::put('/{id}', [LocationController::class, 'update']);
+        Route::delete('/{id}', [LocationController::class, 'destroy']);
+    });
+
+});
 
 // Locations
-Route::prefix('locations')->group(function () {
-    Route::get('/', [LocationController::class, 'index']);
-    Route::post('/', [LocationController::class, 'store']);
-    Route::get('/{id}', [LocationController::class, 'show']);
-    Route::put('/{id}', [LocationController::class, 'update']);
-    Route::delete('/{id}', [LocationController::class, 'destroy']);
-});
+Route::get('/', [LocationController::class, 'index']);
+Route::get('/{id}', [LocationController::class, 'show']);
+
+
 
 // Amenities (Tiện ích)
 Route::prefix('amenities')->group(function () {

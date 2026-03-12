@@ -1,7 +1,9 @@
 <?php
 
 use App\Exceptions\ApiException;
+use App\Http\Middleware\CheckRole;
 use App\Http\Middleware\ForceJsonResponse;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -18,6 +20,9 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->api(prepend: [
             ForceJsonResponse::class,
         ]);
+        $middleware->alias([
+            'role' => CheckRole::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->render(function (ApiException $e, Request $request) {
@@ -27,5 +32,14 @@ return Application::configure(basePath: dirname(__DIR__))
                 'data' => [],
                 'statusCode' => $e->getStatus()
             ], $e->getStatus());
+        });
+        $exceptions->renderable(function (AuthenticationException $e, Request $request) {
+            if ($request->is('api/*')) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Bạn chưa đăng nhập, vui lòng đăng nhập.', // Custom message
+                    'status_code' => 401,
+                ], 401);
+            }
         });
     })->create();
