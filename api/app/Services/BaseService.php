@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Exceptions\ApiException;
-use App\Helpers\SlugHelper;
 use App\Repositories\BaseRepository;
 
 class BaseService
@@ -48,17 +47,9 @@ class BaseService
     /**
      * Tạo mới bản ghi
      *
-     * - Tự động tạo slug từ name
-     * - Tự động tạo sort_order tăng dần
      */
     public function create(array $data)
     {
-        // Tạo slug từ name
-        $data['slug'] = SlugHelper::createSlug($data['name']);
-
-        // Lấy sort_order tiếp theo
-        $data['sort_order'] = $this->repository->getNextSortOrder();
-
         return $this->repository->create($data);
     }
 
@@ -71,14 +62,7 @@ class BaseService
     public function update($id, array $data)
     {
         $record = $this->repository->find($id);
-
-        if (!$record) {
-            throw new ApiException($this->notFoundMessage, 404);
-        }
-
-        // Tạo lại slug từ name
-        $data['slug'] = SlugHelper::createSlug($data['name']);
-
+        
         return $this->repository->update($record, $data);
     }
 
