@@ -30,7 +30,7 @@ class LocationController extends BaseController
     public function show($id)
     {
         $location = $this->service->find($id);
-        return $this->responseCommon(true, 'Tìm thành công địa điểm', $location, 201);
+        return $this->responseCommon(true, 'Tìm thành công địa điểm', $location, 200);
     }
 
     public function store(CreateLocationRequest $request)
