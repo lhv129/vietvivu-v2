@@ -3,6 +3,7 @@
 namespace App\Http\Requests\HouseRule;
 
 use App\Http\Requests\BaseRequest;
+use Illuminate\Validation\Rule;
 
 class CreateHouseRuleRequest extends BaseRequest
 {
@@ -14,7 +15,12 @@ class CreateHouseRuleRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255|unique:house_rules,name',
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('house_rules', 'name')->withoutTrashed()
+            ],
             'is_active' => 'nullable|boolean',
             'sort_order' => 'nullable|integer|min:0',
         ];

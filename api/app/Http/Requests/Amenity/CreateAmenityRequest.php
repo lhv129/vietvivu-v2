@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Amenity;
 
 use App\Http\Requests\BaseRequest;
+use Illuminate\Validation\Rule;
 
 class CreateAmenityRequest extends BaseRequest
 {
@@ -14,7 +15,12 @@ class CreateAmenityRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255|unique:amenities,name',
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('amenities', 'name')->withoutTrashed()
+            ],
             'is_active' => 'nullable|boolean',
             'sort_order' => 'nullable|integer|min:0',
         ];

@@ -3,6 +3,7 @@
 namespace App\Http\Requests\PropertyType;
 
 use App\Http\Requests\BaseRequest;
+use Illuminate\Validation\Rule;
 
 class CreatePropertyTypeRequest extends BaseRequest
 {
@@ -14,7 +15,12 @@ class CreatePropertyTypeRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255|unique:property_types,name',
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('property_types', 'name')->withoutTrashed()
+            ],
             'is_active' => 'nullable|boolean',
             'sort_order' => 'nullable|integer|min:0',
         ];

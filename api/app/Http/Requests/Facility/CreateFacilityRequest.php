@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Facility;
 
 use App\Http\Requests\BaseRequest;
+use Illuminate\Validation\Rule;
 
 class CreateFacilityRequest extends BaseRequest
 {
@@ -14,7 +15,12 @@ class CreateFacilityRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255|unique:facilities,name',
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('facilities', 'name')->withoutTrashed()
+            ],
             'is_active' => 'nullable|boolean',
             'sort_order' => 'nullable|integer|min:0',
         ];

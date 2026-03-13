@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Location;
 
 use App\Http\Requests\BaseRequest;
+use Illuminate\Validation\Rule;
 
 class CreateLocationRequest extends BaseRequest
 {
@@ -14,8 +15,12 @@ class CreateLocationRequest extends BaseRequest
     public function rules(): array
     {
         return [
-
-            'name' => 'required|string|max:255|unique:locations,name',
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('locations', 'name')->withoutTrashed()
+            ],
             'count' => 'nullable|integer|min:0',
             'is_active' => 'nullable|boolean',
             'sort_order' => 'nullable|integer|min:0',
