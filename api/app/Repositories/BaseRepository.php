@@ -124,4 +124,19 @@ class BaseRepository
     {
         return ($this->model->max($column) ?? 0) + 1;
     }
+
+    /**
+     * update is_active theo ID
+     *
+     * Hỗ trợ cả soft delete nếu model có SoftDeletes
+     */
+
+    public function updateIsActive(Model $model)
+    {
+        $model->update([
+            'is_active' => !$model->is_active
+        ]);
+
+        return $model->refresh();
+    }
 }

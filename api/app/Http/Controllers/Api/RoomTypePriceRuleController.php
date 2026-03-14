@@ -63,10 +63,13 @@ class RoomTypePriceRuleController extends BaseController
     {
         $this->service->delete($id);
 
-        return $this->responseCommon(
-            true,
-            "Xóa price rule thành công",
-            []
-        );
+        return $this->responseCommon(true, "Xóa price rule thành công", [], 200);
+    }
+
+    public function updateIsActive($id)
+    {
+        $this->service->updateIsActive($id);
+
+        return $this->responseCommon(true, "Cập nhật trạng thái thành công", [], 200);
     }
 }

@@ -75,6 +75,57 @@ class RoomTypePriceRuleService extends BaseService
         $this->roomTypeCalendarService
             ->updatePriceByDateRange($roomType, $recalcStart, $recalcEnd);
 
+
+        $rule->unsetRelation('roomType');
+        return $rule;
+    }
+
+    public function delete($id)
+    {
+        $rule = $this->repository->find($id);
+
+        if (!$rule) {
+            throw new ApiException($this->notFoundMessage, 404);
+        }
+
+        $roomType = $rule->roomType;
+
+        $start = $rule->start_date ?? now();
+        $end   = $rule->end_date ?? now()->addDays(60);
+
+        $this->repository->delete($rule);
+
+        $this->roomTypeCalendarService
+            ->updatePriceByDateRange($roomType, $start, $end);
+
+        $rule->unsetRelation('roomType');
+
+        return true;
+    }
+
+
+    public function updateIsActive($id)
+    {
+        $rule = $this->repository->find($id);
+
+        if (!$rule) {
+            throw new ApiException($this->notFoundMessage, 404);
+        }
+
+        $roomType = $rule->roomType;
+
+        $start = $rule->start_date ?? now();
+        $end   = $rule->end_date ?? now()->addDays(60);
+
+        $rule->update([
+            'is_active' => $rule->is_active ? 0 : 1
+        ]);
+
+        $this->roomTypeCalendarService
+            ->updatePriceByDateRange($roomType, $start, $end);
+
+        $rule->unsetRelation('roomType');
+
         return $rule;
     }
 }

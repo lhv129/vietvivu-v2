@@ -15,15 +15,17 @@ class RoomTypeController extends BaseController
         $this->service = $service;
     }
 
-    public function index(Request $request)
+    // Lấy danh sách loại phòng (room-types) theo hotel
+    public function getByHotelSlug(string $slug)
     {
-        $data = $this->service->paginate($request->limit ?? 10);
+        $perPage = request()->query('per_page', 10);
 
-        return $this->paginateResponse(
-            $data,
-            "Lấy danh sách loại phòng thành công"
-        );
+        $roomTypes = $this->service->getByHotelSlug($slug, $perPage);
+
+        return $this->paginateResponse($roomTypes, "Lấy danh sách khách sạn thành công", 200);
     }
+
+
 
     public function show($id)
     {
@@ -68,5 +70,11 @@ class RoomTypeController extends BaseController
             "Xóa loại phòng thành công",
             []
         );
+    }
+
+    public function updateIsActive($id)
+    {
+        $roomType = $this->service->updateIsActive($id);
+        return $this->responseCommon(true, 'Cập nhật trạng thái hoạt động thành công', $roomType, 200);
     }
 }

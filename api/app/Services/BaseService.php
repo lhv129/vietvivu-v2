@@ -87,4 +87,19 @@ class BaseService
         }
         return $this->repository->delete($data);
     }
+
+    /**
+     * Cập nhật trạng thái is_active theo ID
+     *
+     * Nếu không tồn tại sẽ báo lỗi
+     */
+    public function updateIsActive($id)
+    {
+        $data = $this->repository->find($id);
+        if (!$data) {
+            throw new ApiException($this->notFoundMessage, 404);
+        }
+
+        return $this->repository->updateIsActive($data);;
+    }
 }

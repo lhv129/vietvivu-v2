@@ -73,12 +73,16 @@ Route::middleware(['auth:api', 'role:1,2,3,4'])->group(function () {
     // Room Types (thể loại phòng)
     Route::prefix('room-types')->group(function () {
         Route::post('/', [RoomTypeController::class, 'store']);
+        Route::put('/{id}', [RoomTypeController::class, 'update']);
+        Route::post('/{id}/update-active', [RoomTypeController::class, 'updateIsActive']);
     });
 
     // Room Type Price Rules (thể loại phòng)
     Route::prefix('room-type-price-rules')->group(function () {
         Route::post('/', [RoomTypePriceRuleController::class, 'store']);
         Route::put('/{id}', [RoomTypePriceRuleController::class, 'update']);
+        Route::delete('/{id}', [RoomTypePriceRuleController::class, 'destroy']);
+        Route::post('/{id}/update-active', [RoomTypePriceRuleController::class, 'updateIsActive']);
     });
 });
 
@@ -93,13 +97,16 @@ Route::prefix('locations')->group(function () {
 
 // Hotels (Khách sạn)
 Route::prefix('hotels')->group(function () {
+    // Lấy danh sách khách sạn
     Route::get('/', [HotelController::class, 'index']);
     Route::get('/{id}', [HotelController::class, 'show']);
 });
 
+
+// Lấy ra các loại phòng (room-types) của hotel
+Route::get('hotels/{slug}/room-types', [RoomTypeController::class, 'getByHotelSlug']);
 // Room Types (thể loại phòng)
 Route::prefix('room-types')->group(function () {
-    Route::get('/', [HotelController::class, 'index']);
     Route::get('/{id}', [HotelController::class, 'show']);
 });
 
