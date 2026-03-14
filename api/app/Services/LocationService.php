@@ -15,7 +15,7 @@ class LocationService extends BaseService
     {
         parent::__construct($repository);
     }
-    protected string $notFoundMessage = "Địa điểm không tồn tại";
+    protected string $notFoundMessage = "Địa điểm không tồn tại hoặc đã bị xóa";
 
     public function create(array $data, $thumbnail = null)
     {

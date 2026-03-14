@@ -3,21 +3,19 @@
 namespace App\Services;
 
 use App\Exceptions\ApiException;
-use App\Helpers\SlugHelper;
-use App\Repositories\BaseRepository;
 
 class BaseService
 {
-    // Repository dùng để thao tác database
-    protected BaseRepository $repository;
+    /** @var T */
+    protected $repository;
 
-    // Message mặc định khi không tìm thấy bản ghi
-    protected string $notFoundMessage = "Bản ghi không tồn tại";
-
-    public function __construct(BaseRepository $repository)
+    public function __construct($repository)
     {
         $this->repository = $repository;
     }
+
+    // Message mặc định khi không tìm thấy bản ghi
+    protected string $notFoundMessage = "Bản ghi không tồn tại";
 
     /**
      * Lấy danh sách dữ liệu có phân trang
@@ -48,18 +46,19 @@ class BaseService
     /**
      * Tạo mới bản ghi
      *
-     * - Tự động tạo slug từ name
-     * - Tự động tạo sort_order tăng dần
      */
     public function create(array $data)
     {
-        // Tạo slug từ name
-        $data['slug'] = SlugHelper::createSlug($data['name']);
-
-        // Lấy sort_order tiếp theo
-        $data['sort_order'] = $this->repository->getNextSortOrder();
-
         return $this->repository->create($data);
+    }
+
+    /**
+     * Tạo mới nhiều bản ghi
+     *
+     */
+    public function bulkInsert(array $data)
+    {
+        return $this->repository->insert($data);
     }
 
     /**
@@ -71,13 +70,6 @@ class BaseService
     public function update($id, array $data)
     {
         $record = $this->repository->find($id);
-
-        if (!$record) {
-            throw new ApiException($this->notFoundMessage, 404);
-        }
-
-        // Tạo lại slug từ name
-        $data['slug'] = SlugHelper::createSlug($data['name']);
 
         return $this->repository->update($record, $data);
     }

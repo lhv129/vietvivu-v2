@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable, SoftDeletes;
@@ -20,7 +21,16 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'role_id',
+        'first_name',
+        'last_name',
+        'display_name',
+        'job_name',
+        'gender',
+        'avatar',
+        'bgImage',
+        'count',
+        'description',
         'email',
         'password',
     ];
@@ -47,6 +57,21 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    /*
+    |--------------------------------------------------------------------------
+    | JWT
+    |--------------------------------------------------------------------------
+    */
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+
 
     /*
     |--------------------------------------------------------------------------

@@ -41,9 +41,9 @@ class ImageHelper
 
         $image = $manager->read($file);
 
-        $image->scale(width: $width);
+        // $image->scale(width: $width);
 
-        $encoded = $image->toWebp(80);
+        $encoded = $image->toWebp(100);
 
         Storage::disk('public')->put($path, $encoded);
 
@@ -85,9 +85,9 @@ class ImageHelper
 
             $image = $manager->read($file);
 
-            $image->scale(width: $width);
+            // $image->scale(width: $width);
 
-            $encoded = $image->toWebp(80);
+            $encoded = $image->toWebp(100);
 
             Storage::disk('public')->put($path, $encoded);
 
@@ -125,6 +125,20 @@ class ImageHelper
             if ($path && Storage::disk('public')->exists($path)) {
                 Storage::disk('public')->delete($path);
             }
+        }
+    }
+
+    /**
+     * Delete directory
+     */
+    public static function deleteDirectory($path)
+    {
+        if (!$path) {
+            return;
+        }
+
+        if (Storage::disk('public')->exists($path)) {
+            Storage::disk('public')->deleteDirectory($path);
         }
     }
 
