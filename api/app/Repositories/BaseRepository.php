@@ -77,6 +77,17 @@ class BaseRepository
     }
 
     /**
+     * Tạo nhiều bản ghi
+     *
+     * @param array $data dữ liệu cần insert
+     */
+    public function bulkInsert(array $data)
+    {
+        return $this->model->insert($data);
+    }
+
+
+    /**
      * Cập nhật bản ghi
      *
      * @param Model $model model cần update

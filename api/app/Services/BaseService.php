@@ -53,6 +53,15 @@ class BaseService
     }
 
     /**
+     * Tạo mới nhiều bản ghi
+     *
+     */
+    public function bulkInsert(array $data)
+    {
+        return $this->repository->insert($data);
+    }
+
+    /**
      * Cập nhật bản ghi theo ID
      *
      * - Tìm bản ghi trước khi update

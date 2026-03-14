@@ -16,7 +16,7 @@ class CheckRole
     {
         $user = auth()->user();
 
-        if (!$user || !in_array($user->role, $roles)) {
+        if (!$user || !in_array($user->role_id, $roles)) {
             return response()->json([
                 'success' => false,
                 'message' => 'Bạn không có quyền truy cập',
